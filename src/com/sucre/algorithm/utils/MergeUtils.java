@@ -76,8 +76,8 @@ public class MergeUtils {
     }
 
     public static void main(String[] args) {
-        int[] arr = {2,45,67,345,100,1,45,223,456};
-        merge(arr,0,3,5,8);
+        int[] arr = {2,45,67,345,400,1,45,223,456};
+        merge(arr,0,4,5,8);
 
         System.out.println(Arrays.toString(arr));
     }
