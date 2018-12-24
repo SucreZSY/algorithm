@@ -57,7 +57,7 @@ public class ReverseOrder_Problem {
     }
 
     public static void main(String[] args) {
-        int[] arr = {1,3,4,2,5,1,3,22,3};
+        int[] arr = {4,3,2,1,0};
         reverseOrder(arr,0,arr.length-1);
     }
 }

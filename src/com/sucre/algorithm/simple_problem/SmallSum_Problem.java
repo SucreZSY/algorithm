@@ -29,6 +29,7 @@ public class SmallSum_Problem {
      * @param indexRR 右数组右边界
      * @return 返回这个两个数组比较之后的小和
      */
+    @SuppressWarnings("all")
     public static int merge(int[] target, int indexLL, int indexLR, int indexRL, int indexRR){
         if (indexLL == indexRL) return 0;
         int indexL = indexLL;
