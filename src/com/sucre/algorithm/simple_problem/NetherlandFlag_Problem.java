@@ -10,6 +10,7 @@ public class NetherlandFlag_Problem {
      * @param right 终点
      * @return 相等区的边界
      */
+    @SuppressWarnings("all")
     public static int[] netherlandFlag(int[] target, int left, int right){
         int less = left - 1;
         int more = right;
