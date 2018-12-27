@@ -57,9 +57,10 @@ public class StreamMedian_Problem {
     public static void main(String[] args) {
         int[] arr = {2,3,5,12,3};
         StreamMedian_Problem median = new StreamMedian_Problem();
+        int j = 0;
         for (int i : arr) {
             median.elementToHeap(i);
-            System.out.println("第" + i +"次计算中位数：" + median.getMedian());
+            System.out.println("第" + ++j +"次计算中位数：" + median.getMedian());
         }
 
     }
