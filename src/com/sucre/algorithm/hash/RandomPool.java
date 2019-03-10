@@ -1,13 +1,13 @@
 package com.sucre.algorithm.hash;
 
-import java.util.HashMap;
+import java.util.*;
 
 /**
  * 实现能等概率获取随机key的方法
  */
 public class RandomPool {
-    private HashMap<Object, Integer> keys;
-    private HashMap<Integer, Object> seq;
+    public HashMap<Object, Integer> keys;
+    public HashMap<Integer, Object> seq;
     private int size;//从1开始
 
     public RandomPool() {
@@ -55,22 +55,65 @@ public class RandomPool {
         }
     }
 
+    public boolean contains(Object key){
+        if (keys.containsKey(key)){
+            return true;
+        }else {
+            return false;
+        }
+    }
+
     public static void main(String[] args) {
         RandomPool pool = new RandomPool();
-        int i = 0;
-        while (i != 20){
-            pool.insert(i++);
+        List<String> lessons = new ArrayList<>();
+        lessons.add("a");
+        lessons.add("b");
+        lessons.add("c");
+        lessons.add("d");
+        lessons.add("e");
+        lessons.add("f");
+        lessons.add("g");
+        lessons.add("h");
+        lessons.add("i");
+        lessons.add("j");
+        lessons.add("k");
+        lessons.add("l");
+        lessons.add("m");
+        lessons.add("n");
+
+        for (String lesson : lessons) {
+            pool.insert(lesson);
         }
 
-        while (i != 0){
-            System.out.print(pool.getRandom() + " ");
-            i--;
+        String[][] persons = {{"a","c"},{"d","c"},{"j","k"},{"a","b"},{"e",null},{"e",null}};
+
+        for (int i = 0; i < persons.length; i++){
+            for (int j = 0; j < persons[0].length; j++){
+                if (pool.contains(persons[i][j])){
+                    pool.remove(persons[i][j]);
+                }else {
+                    persons[i][j] = null;
+                }
+            }
         }
-        pool.remove(6);
+        for (int i = 0; i < persons.length; i++){
+            System.out.print("第" + i + "个人：");
+            for (int j = 0; j < persons[0].length; j++){
+                if (persons[i][j] != null){
+                    System.out.print(persons[i][j] + " ");
+                }else {
+                    Object key = pool.getRandom();
+                    System.out.print(key + " ");
+                    pool.remove(key);
+                }
+            }
+            System.out.println();
+        }
         System.out.println();
-        while (i != 20){
-            System.out.print(pool.getRandom() + " ");
-            i++;
+        System.out.print("还剩:");
+        Set<Object> keySet = pool.keys.keySet();
+        for (Object o : keySet) {
+            System.out.print(o + "    ");
         }
     }
 }

@@ -10,12 +10,10 @@ public class JumpFloor {
      * @return 跳法种数
      */
     public int JumpFloor(int target) {
-        if (target == 1 || target == 2) return target;
-        return JumpFloor(target -1) + JumpFloor(target - 2);
+       return (target == 1 || target == 2) ? target : JumpFloor(target - 1) + JumpFloor(target - 2);
     }
     //变态跳
     public int JumpFloorII(int target) {
-        if (target == 1 || target == 2) return target;
-        return JumpFloorII(target - 1) << 1;
+        return (target == 1) ? target : JumpFloorII(target - 1) << 1;
     }
 }
