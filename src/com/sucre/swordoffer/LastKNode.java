@@ -1,6 +1,4 @@
-package com.sucre.SwordOffer;
-
-import java.util.List;
+package com.sucre.swordoffer;
 
 /**
  * 倒数第k个节点

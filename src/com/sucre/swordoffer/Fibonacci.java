@@ -1,4 +1,4 @@
-package com.sucre.SwordOffer;
+package com.sucre.swordoffer;
 
 /**
  * 斐波那契数列

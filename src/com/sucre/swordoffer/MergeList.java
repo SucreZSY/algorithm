@@ -1,4 +1,4 @@
-package com.sucre.SwordOffer;
+package com.sucre.swordoffer;
 
 /**
  * 合并两个有序链表

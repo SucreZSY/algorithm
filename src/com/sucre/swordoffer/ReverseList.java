@@ -1,7 +1,6 @@
-package com.sucre.SwordOffer;
+package com.sucre.swordoffer;
 
 
-import java.util.List;
 import java.util.Stack;
 
 /**

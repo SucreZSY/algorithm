@@ -1,4 +1,4 @@
-package com.sucre.SwordOffer;
+package com.sucre.swordoffer;
 
 import java.util.ArrayList;
 import java.util.Stack;

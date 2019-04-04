@@ -1,4 +1,4 @@
-package com.sucre.SwordOffer;
+package com.sucre.swordoffer;
 
 /**
  * 判断一个数组是否是搜索二叉树的后序数列
