@@ -10,5 +10,5 @@ public class Singleton {
         }
         return new Singleton();
     }
-    private Singleton(){}
+    private Singleton(){}//私有化构造
 }
