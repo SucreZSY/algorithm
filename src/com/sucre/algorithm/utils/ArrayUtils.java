@@ -1,7 +1,7 @@
 package com.sucre.algorithm.utils;
 
 /**
- * 数组常见的工具方法，比如交换和找最大最小的方法
+ * 数组常见的工具方法，比如交换元素位置和找最大最小的方法
  */
 public class ArrayUtils {
     /**
