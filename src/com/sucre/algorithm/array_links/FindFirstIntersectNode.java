@@ -4,6 +4,7 @@ package com.sucre.algorithm.array_links;
  * 找到两个单链表相交的第一个节点
  * 可能不相交，可能成环，也可能无环
  */
+@SuppressWarnings("all")
 public class FindFirstIntersectNode {
     public static class Node{
         public int value;
