@@ -1,4 +1,4 @@
-package com.sucre.algorithm.tree;
+package com.sucre.algorithm.basic_tree;
 
 /**
  * 找到一个节点的后继结点的方法

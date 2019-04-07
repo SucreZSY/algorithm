@@ -1,4 +1,4 @@
-package com.sucre.algorithm.tree;
+package com.sucre.algorithm.basic_tree;
 
 /**
  * 判断一棵二叉树是不是平衡二叉树

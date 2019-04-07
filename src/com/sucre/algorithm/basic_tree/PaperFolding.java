@@ -1,4 +1,4 @@
-package com.sucre.algorithm.tree;
+package com.sucre.algorithm.basic_tree;
 
 /**
  * 折纸问题
