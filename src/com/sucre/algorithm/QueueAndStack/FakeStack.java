@@ -1,4 +1,4 @@
-package com.sucre.algorithm.medium_problem;
+package com.sucre.algorithm.QueueAndStack;
 
 public class FakeStack {
     private int[] stack;//底层数组

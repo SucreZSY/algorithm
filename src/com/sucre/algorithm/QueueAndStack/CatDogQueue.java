@@ -1,4 +1,4 @@
-package com.sucre.algorithm.medium_problem;
+package com.sucre.algorithm.QueueAndStack;
 
 import java.util.LinkedList;
 import java.util.Queue;
