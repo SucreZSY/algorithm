@@ -1,7 +1,7 @@
 package com.sucre.algorithm.hash;
 
 /**
- * 岛问题
+ * 岛问题，引出并查集来解决分布式岛的问题
  */
 public class Island {
     /**

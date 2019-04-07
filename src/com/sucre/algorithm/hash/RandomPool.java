@@ -3,7 +3,7 @@ package com.sucre.algorithm.hash;
 import java.util.*;
 
 /**
- * 实现能等概率获取随机key的方法
+ * 实现能等概率获取随机key的方法，删除一个key时移动操作比较重要
  */
 public class RandomPool {
     public HashMap<Object, Integer> keys;
@@ -39,7 +39,7 @@ public class RandomPool {
     }
 
     /**
-     * 这个方法比较复杂，因为我们要根据size来获取随机数，如果删除了一个key的话就会造成size不连续，就不会均匀denggailv
+     * 这个方法比较复杂，因为我们要根据size来获取随机数，如果删除了一个key的话就会造成size不连续，就不会均匀等概率
      * @param key 删除的key
      */
     public void remove(Object key){

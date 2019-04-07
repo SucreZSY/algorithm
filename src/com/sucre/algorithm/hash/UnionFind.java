@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.List;
 
 /**
- * 并查集的实现
+ * 并查集的实现，对递归的理解更加深入了一些
  */
 public class UnionFind {
     public static class Node{}

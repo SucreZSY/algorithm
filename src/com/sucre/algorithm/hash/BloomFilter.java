@@ -1,7 +1,7 @@
 package com.sucre.algorithm.hash;
 
 /**
- * 布隆过滤器的简单实现
+ * 布隆过滤器的简单实现，位运算比较重要，比如线程池中就是用的一个int变量来记录线程池状态和工作线程的个数，就用的某几位来表示不同的信息
  */
 public class BloomFilter {
     public static void main(String[] args) {
