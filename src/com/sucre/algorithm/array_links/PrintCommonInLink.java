@@ -13,9 +13,14 @@ public class PrintCommonInLink {
         }
     }
 
+    /**
+     * 打印两个有序链表相同的部分
+     * @param head1 第一个链表的头
+     * @param head2 第二个链表的头
+     */
     public static void printCommonPart(Node head1, Node head2){
         if (head1 == null || head2 == null) return ;
-        while (head1 != null){
+        while (head1 != null && head2 != null){
             if (head1.value == head2.value){
                 System.out.println(head1.value + " ");
                 head1 = head1.next;

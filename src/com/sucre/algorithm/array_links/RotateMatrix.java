@@ -71,6 +71,6 @@ public class RotateMatrix {
                 {7,8,9}
         };
         rotateSquare(arr, 0, 0, arr.length - 1, arr[0].length - 1);
-        System.out.println(Arrays.toString(arr));
+        System.out.println(Arrays.toString(arr));//打印转置之后的数组
     }
 }

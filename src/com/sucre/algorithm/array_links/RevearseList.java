@@ -24,7 +24,7 @@ public class RevearseList {
     }
 
     /**
-     * 反转单链表
+     * 反转单链表，只需要定义三个指针即可
      * @param head 单链表的头结点
      * @return 反转后的头结点
      */

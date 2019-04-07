@@ -1,7 +1,7 @@
 package com.sucre.algorithm.array_links;
 
 /**
- * 判断单链表是否为回文结构
+ * 判断单链表是否为回文结构，找到中点，把重点后面的部分全部转置即可
  */
 public class IsPalindromeList {
     public static class Node{

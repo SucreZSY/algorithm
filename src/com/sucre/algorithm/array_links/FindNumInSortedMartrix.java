@@ -1,7 +1,7 @@
 package com.sucre.algorithm.array_links;
 
 /**
- * 在行列都排好序的矩阵中找数
+ * 在行列都排好序的矩阵中找数，注意一定要从左下或者右上找，使两个方向数字大小规律相反
  */
 public class FindNumInSortedMartrix {
     /**

@@ -191,7 +191,7 @@ public class FindFirstIntersectNode {
         head2.next.next = new Node(8);
         head2.next.next.next = head1.next.next.next.next.next; // 8->6
         System.out.println(getIntersectNode(head1, head2).value);
-
+        //比较复杂的一个算法
     }
 
 

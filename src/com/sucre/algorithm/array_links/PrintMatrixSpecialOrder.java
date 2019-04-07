@@ -1,5 +1,5 @@
 package com.sucre.algorithm.array_links;
-//之字形打印矩阵
+//之字形打印矩阵，打印外圈然后递归即可
 public class PrintMatrixSpecialOrder {
     /**
      * 之字形打印矩阵

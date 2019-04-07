@@ -1,9 +1,5 @@
 package com.sucre.algorithm.array_links;
 
-import com.sun.xml.internal.ws.api.message.HeaderList;
-import com.sun.xml.internal.ws.policy.privateutil.PolicyUtils;
-
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 

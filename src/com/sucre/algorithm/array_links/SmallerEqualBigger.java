@@ -21,7 +21,7 @@ public class SmallerEqualBigger {
      */
     public static Node listPartition(Node head, int pivot){
         if (head == null) throw new RuntimeException("error");
-        Node sH = null;//H是头的意思，T是尾的意思
+        Node sH = null;//H是head的意思，T是tail的意思
         Node sT = null;
         Node eH = null;
         Node eT = null;
