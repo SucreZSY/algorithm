@@ -1,4 +1,4 @@
-package com.sucre.algorithm.simple_problem;
+package com.sucre.algorithm.sort_problem;
 
 import java.util.Comparator;
 import java.util.PriorityQueue;

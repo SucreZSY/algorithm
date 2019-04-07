@@ -1,4 +1,4 @@
-package com.sucre.algorithm.simple_problem;
+package com.sucre.algorithm.sort_problem;
 
 /**
  * 依然是利用归并排序来打印逆序对

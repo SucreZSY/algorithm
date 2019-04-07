@@ -1,4 +1,4 @@
-package com.sucre.algorithm.simple_problem;
+package com.sucre.algorithm.sort_problem;
 
 /**
  * 为了加深对归并的理解，这里的归并排序重新写一遍
