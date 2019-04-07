@@ -1,7 +1,8 @@
 package com.sucre.algorithm.preTree;
 
 /**
- * 前缀树的实现
+ * 前缀树的实现，对于抽象指针的理解更加深入
+ *      并不是说只有链表中的引用变量才能作为指针，内置一个数组，特定的下标内容存储下一节点，也可以抽象为链表结构
  */
 @SuppressWarnings("all")
 public class PreTree {
