@@ -1,4 +1,4 @@
-package com.sucre.algorithm.sort;
+package com.sucre.algorithm.basic_sort;
 
 import com.sucre.algorithm.utils.MergeUtils;
 
