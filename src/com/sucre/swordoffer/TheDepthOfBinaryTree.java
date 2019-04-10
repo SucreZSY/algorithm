@@ -23,10 +23,7 @@ public class TheDepthOfBinaryTree {
      * @return 返回二叉树的深度
      */
     public int TreeDepth(TreeNode root) {
-        if (root == null) return 0;
-        int leftHeight = TreeDepth(root.left);
-        int rightHeight = TreeDepth(root.right);
-        return Math.max(leftHeight, rightHeight) + 1;
+        return root == null ? 0 : Math.max(TreeDepth(root.left), TreeDepth(root.right)) + 1;
     }
 
 }
