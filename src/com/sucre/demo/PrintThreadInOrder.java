@@ -6,14 +6,14 @@ import java.util.concurrent.Semaphore;
  * 按顺序打印线程
  */
 public class PrintThreadInOrder {
-    private static Semaphore semaphoreA = new Semaphore(1);
-    private static Semaphore semaphoreB = new Semaphore(0);
-    private static Semaphore semaphoreC = new Semaphore(0);
+    private final Semaphore semaphoreA = new Semaphore(1);
+    private final Semaphore semaphoreB = new Semaphore(0);
+    private final Semaphore semaphoreC = new Semaphore(0);
 
-    private static int n;
+    private int n;
 
     public PrintThreadInOrder(int n) {
-        PrintThreadInOrder.n = n;
+        this.n = n;
     }
 
     public void printA(){
@@ -57,7 +57,7 @@ public class PrintThreadInOrder {
     }
 
     public static void main(String[] args) {
-        PrintThreadInOrder demo = new PrintThreadInOrder(1);
+        PrintThreadInOrder demo = new PrintThreadInOrder(3);
         new Thread(demo::printA).start();
         new Thread(demo::printB).start();
         new Thread(demo::printC).start();
