@@ -1,4 +1,4 @@
-package com.sucre.leetcode;
+package com.sucre.leetcode.tree;
 
 /**
  * 判断两棵二叉树是否相同

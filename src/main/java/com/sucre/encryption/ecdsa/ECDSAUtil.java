@@ -1,93 +1,54 @@
 package com.sucre.encryption.ecdsa;
-import sun.security.ec.ECPrivateKeyImpl;
-import sun.security.ec.ECPublicKeyImpl;
-import java.math.BigInteger;
+
 import java.security.*;
-import java.security.interfaces.ECPrivateKey;
-import java.security.interfaces.ECPublicKey;
-import java.security.spec.ECFieldFp;
-import java.security.spec.ECParameterSpec;
-import java.security.spec.ECPoint;
-import java.security.spec.EllipticCurve;
-import java.util.HashMap;
-import java.util.Map;
+import java.security.spec.PKCS8EncodedKeySpec;
+import java.security.spec.X509EncodedKeySpec;
+import java.util.Base64;
 
+/**
+ * ECDSA签名算法
+ */
 public class ECDSAUtil {
-    private static final String KEY_ALGORITHM="EC";
-    private static final int KEY_SIZE = 256;
-    private static final String SIGNATURE_ALGORITHM = "SHA512withECDSA";
-
-    //产生密钥对,获取密钥参数
-    public static  Map<String,Object> initKey() throws Exception{
-        KeyPairGenerator keyPairGenerator = KeyPairGenerator.getInstance(KEY_ALGORITHM);
-        //初始化密钥对生成器
-        keyPairGenerator.initialize(KEY_SIZE);
+    public static void main(String[] args) throws Exception {
+        KeyPairGenerator keyPairGenerator = KeyPairGenerator.getInstance("EC");
+    keyPairGenerator.initialize(256);
         KeyPair keyPair = keyPairGenerator.generateKeyPair();
-        //得到公钥和私钥
-        ECPublicKey publicKey = (ECPublicKey) keyPair.getPublic();
-        ECPrivateKey privateKey = (ECPrivateKey) keyPair.getPrivate();
-        //获取私钥D
-        BigInteger D = privateKey.getS();
-        //得到公钥的横纵坐标
-        BigInteger publicKeyX= publicKey.getW().getAffineX();
-        BigInteger publicKeyY= publicKey.getW().getAffineY();
-        //得到生成椭圆曲线的参数a,b
-        java.security.spec.ECParameterSpec ecParams = privateKey.getParams();
-        BigInteger curveA = ecParams.getCurve().getA();
-        BigInteger curveB = ecParams.getCurve().getB();
-        //获取此椭圆有限字段的素数 qq
-        ECFieldFp fieldFp = (ECFieldFp) ecParams.getCurve().getField();
-        BigInteger q = fieldFp.getP();
-        //获取椭圆的基点的x,y值
-        BigInteger coordinatesX = ecParams.getGenerator().getAffineX();
-        BigInteger coordinatesY =  ecParams.getGenerator().getAffineY();
-        //基点的阶
-        BigInteger coordinatesG = ecParams.getOrder();
-        //获取余因子
-        int h = ecParams.getCofactor();
 
-        Map<String, Object> initKeyMap = new HashMap<String,Object>();
-        //椭圆曲线参数A,B
-        initKeyMap.put("A",curveA);
-        initKeyMap.put("B",curveB);
-        //素数Q
-        initKeyMap.put("Q",q);
-        //G点的坐标
-        initKeyMap.put("X",coordinatesX);
-        initKeyMap.put("Y",coordinatesY);
-        //N为G点的阶
-        initKeyMap.put("N",coordinatesG);
-        //H为余因子
-        initKeyMap.put("H",h);
-        //获取私钥
-        initKeyMap.put("D",D);
-        //获取公钥点的坐标
-        initKeyMap.put("PUBKEY_X",publicKeyX);
-        initKeyMap.put("PUBKEY_Y",publicKeyY);
-        return initKeyMap;
+        byte[] privateKey = keyPair.getPrivate().getEncoded();
+        byte[] publicKey = keyPair.getPublic().getEncoded();
+
+        String content = "helloworld";
+
+        byte[] sign = sign(content.getBytes(), privateKey);
+        System.out.println("dsa sign:"+ Base64.getEncoder().encodeToString(sign));
+
+        Boolean flag = verify(content.getBytes(), sign, publicKey);
+        System.out.println("dsa verify:"+flag);
     }
 
-    //DATA是数据，Q是大素数q，A，B为椭圆曲线参数a,b，G为基点，N为点G的阶，H是余因子,X,Y是基点的坐标，PUBKEY_X,PUBKEY_Y是公钥(DG)的坐标，D是随机数私钥
+    public static byte[] sign(byte[] content, byte[] privateKey) throws Exception {
+        //单例获取key工厂类，将拿到的privateKey创建PKCS8EncodedKeySpec对象，通过其获取PrivateKey对象
+        KeyFactory keyFactory = KeyFactory.getInstance("EC");
+        PrivateKey priKey = keyFactory.generatePrivate(new PKCS8EncodedKeySpec(privateKey));
 
-    public static KeyPair generateKey(BigInteger Q, BigInteger A, BigInteger B, BigInteger N, int H, BigInteger X, BigInteger Y, BigInteger PUBKEY_X, BigInteger PUBKEY_Y, BigInteger D) throws Exception{
-        //创建基于指定值的椭圆曲线域参数
-        ECParameterSpec ecParameterSpec = new ECParameterSpec(new EllipticCurve(new ECFieldFp(Q),A,B),new ECPoint(X,Y),N,H);
-        ECPublicKey publicKey = new ECPublicKeyImpl(new ECPoint(PUBKEY_X,PUBKEY_Y),ecParameterSpec);
-        ECPrivateKey privateKey = new ECPrivateKeyImpl(D,ecParameterSpec);
-        return new KeyPair(publicKey,privateKey);
-    }
-    public static   byte[] sign(byte[] data,PrivateKey privateKey) throws Exception {
-        Signature signature = Signature.getInstance(SIGNATURE_ALGORITHM);
-        signature.initSign(privateKey);
-        signature.update(data);
-        return signature.sign();
+//获取Signature对象，签名算法为SHA1withDSA，此处还有较多可选择比如MD5withDSA等
+        Signature signature = Signature.getInstance("SHA1withECDSA");
+        signature.initSign(priKey);
+        signature.update(content);
+        byte[] encodeResult = signature.sign();
+        return encodeResult;
     }
 
+    public static boolean verify(byte[] content, byte[] sign, byte[] publicKey) throws Exception{
+        //单例获取key工厂类，将拿到的publicKey创建X509EncodedKeySpec对象，通过其获取PublicKey对象
+        KeyFactory keyFactory = KeyFactory.getInstance("EC");
+        PublicKey pubKey = keyFactory.generatePublic(new X509EncodedKeySpec(publicKey));
 
-    public static boolean verify(byte[] data,PublicKey publicKey, byte[] sign) throws Exception {
-        Signature signature = Signature.getInstance(SIGNATURE_ALGORITHM);
-        signature.initVerify(publicKey);
-        signature.update(data);
-        return signature.verify(sign);
+//获取Signature对象，签名算法为SHA1withDSA，此处还有较多可选择比如MD5withDSA等
+        Signature signature = Signature.getInstance("SHA1withECDSA");
+        signature.initVerify(pubKey);
+        signature.update( content );
+        boolean bverify = signature.verify(sign);
+        return bverify;
     }
 }

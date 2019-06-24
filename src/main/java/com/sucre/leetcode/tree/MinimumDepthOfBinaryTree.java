@@ -1,4 +1,4 @@
-package com.sucre.leetcode;
+package com.sucre.leetcode.tree;
 
 /**
  * 查找二叉树的最小深度

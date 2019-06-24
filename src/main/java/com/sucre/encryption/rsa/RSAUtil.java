@@ -138,4 +138,8 @@ public class RSAUtil {
         byte[] pkcs1Bytes = pkcs1Key.getEncoded();
         return Bae64Util.encodeByBase64(pkcs1Bytes);
     }*/
+
+    public static void main(String[] args) {
+
+    }
 }

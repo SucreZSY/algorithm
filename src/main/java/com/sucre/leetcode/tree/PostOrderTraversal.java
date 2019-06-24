@@ -1,4 +1,4 @@
-package com.sucre.leetcode;
+package com.sucre.leetcode.tree;
 
 import java.util.ArrayList;
 import java.util.Collections;
