@@ -90,4 +90,53 @@ class Solution_035 {
 
         return mappingNodeMap.get(head);
     }
+
+    /**
+     * 不使用map解决这个问题
+     * @param head
+     * @return
+     */
+    public Node copyRandomListNotUseMap(Node head) {
+        if (head == null) {
+            return null;
+        }
+
+        Node origin = head;
+        Node nextOrigin = null;
+        while (origin != null) {
+            nextOrigin = origin.next;
+            origin.next = new Node(origin.val);
+            origin.next.next = nextOrigin;
+            origin = nextOrigin;
+        }
+
+        //连接random
+        Node originRandom;
+        origin = head;
+        while (origin != null) {
+            nextOrigin = origin.next.next;
+            originRandom = origin.random;
+            origin.next.random = originRandom == null ? null : originRandom.next;
+            origin = nextOrigin;
+        }
+
+        //断开copy
+        Node copyHead = head.next;
+        Node copy;
+        Node nextCopy;
+        origin = head;
+        while (origin != null) {
+            copy = origin.next;
+            nextOrigin = origin.next.next;
+            if (nextOrigin == null) {
+                nextCopy = null;
+            } else {
+                nextCopy = nextOrigin.next;
+            }
+            origin.next = nextOrigin;
+            copy.next = nextCopy;
+            origin = nextOrigin;
+        }
+        return copyHead;
+    }
 }
