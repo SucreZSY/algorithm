@@ -30,22 +30,19 @@ public class Code_063 {
      * @return
      */
     public int maxProfit(int[] prices) {
-        //使用二维数组 i代表i天买 j代表j天卖 值为利润 i < j
         if (prices == null || prices.length < 1) {
             return 0;
         }
-
-        //int[][] profitArr = new int[prices.length][prices.length];
+        //第0天的最大利润为0 最小价格为integer.max 则
+        //第i天的最大利润 profit[i]为 max(profit[i - 1], price[i] - (0 -> i-1天的最小价格))
         int maxProfit = 0;
-        int i = 0;
-        int j;
-        while (i < prices.length) {
-            j = i + 1;
-            while (j < prices.length) {
-                maxProfit = Math.max(maxProfit, prices[j++] - prices[i]);
-            }
-            i++;
+        int minPrice = Integer.MAX_VALUE;
+
+        for (int price : prices) {
+            maxProfit = Math.max(maxProfit, price - minPrice);
+            minPrice = Math.min(minPrice, price);
         }
+
         return maxProfit;
     }
 
