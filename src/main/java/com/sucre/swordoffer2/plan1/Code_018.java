@@ -1,5 +1,7 @@
 package com.sucre.swordoffer2.plan1;
 
+import java.util.List;
+
 /**
  * @author sucre
  * @desc https://leetcode.cn/problems/shan-chu-lian-biao-de-jie-dian-lcof/?envType=study-plan&id=lcof&plan=lcof&plan_progress=bb9t833
@@ -35,6 +37,7 @@ public class Code_018 {
         if (head == null) {
             return null;
         }
+        ListNode newHead = head;
 
         ListNode pre = null;
         ListNode current = head;
@@ -42,8 +45,18 @@ public class Code_018 {
 
         while (current != null) {
             next = current.next;
-
+            if (current.val == val) {
+                if (pre == null) {
+                    return next;
+                } else {
+                    pre.next = next;
+                    return newHead;
+                }
+            } else {
+                pre = current;
+                current = next;
+            }
         }
-        return null;
+        return newHead;
     }
 }
